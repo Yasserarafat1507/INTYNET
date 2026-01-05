@@ -3,5 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('form.index');
+});
+Route::get('/table', function () {
+    return view('table.index');
 });

@@ -37,6 +37,7 @@
         }
     },
     "scripts": {
+        "run": "npx taiwindcss -i ./resources/css/app.css -o ./public/css/app.css --watch",
         "setup": [
             "composer install",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
