@@ -9,7 +9,7 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        return view('pages.form');
+        return view('form.index');
     }
     public function store(Request $request) {
         $validated = $request->validate([
@@ -23,7 +23,7 @@ class CustomerController extends Controller
         Customer::create($validated);
 
         return redirect()
-            ->route('customer.index')
+            ->route('form.index')
             ->with('success', 'Data berhasil disimpan.');
     }
 }
