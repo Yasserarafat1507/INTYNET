@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html>
 
@@ -21,7 +22,6 @@
     <footer class="rounded-base m-4">
         @include('layouts.navbar.footer')
     </footer>
-
 </body>
 
 </html>
