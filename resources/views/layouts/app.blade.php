@@ -1,5 +1,5 @@
 <!doctype html>
-    <html>
+    <html class="h-full bg-gray-900">
 
     <head>
         <meta charset="utf-8" />
@@ -12,15 +12,9 @@
             integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-        <style>
-            #map {
-                height: 400px;
-                width: 400px;
-            }
-        </style>
     </head>
 
-    <body class="bg-white">
+    <body class="bg-white h-full">
         <header class="shadow-sm sticky top-0 z-50">
             @include('layouts.navbar.header')
         </header>

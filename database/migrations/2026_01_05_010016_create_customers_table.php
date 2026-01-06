@@ -20,6 +20,8 @@ return new class extends Migration
             $table->double('latitude')->nullable();
             $table->double('longitude')->nullable();
 
+            $table->enum('status', ['waiting', 'accepted', 'rejected'])->default('waiting');
+
             $table->timestamps();
         });
 
