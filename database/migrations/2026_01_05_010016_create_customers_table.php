@@ -20,7 +20,7 @@ return new class extends Migration
             $table->double('latitude')->nullable();
             $table->double('longitude')->nullable();
 
-            $table->enum('status', ['waiting', 'accepted', 'rejected'])->default('waiting');
+            $table->enum('status', array_keys(config('constants.status')))->default(config('constants.status.waiting'));
 
             $table->timestamps();
         });
