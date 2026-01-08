@@ -15,12 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone')->nullable();
+            $table->string('phone')->unique();
 
             $table->double('latitude')->nullable();
             $table->double('longitude')->nullable();
 
-            $table->enum('status', array_keys(config('constants.status')))->default(config('constants.status.waiting'));
+            $table->enum('status', ['waiting', 'accepted', 'rejected'])->default('waiting');
+
 
             $table->timestamps();
         });
@@ -46,6 +47,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('costumers');
+        Schema::dropIfExists('customers');
     }
 };

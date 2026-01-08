@@ -29,5 +29,4 @@
         @include('layouts.navbar.footer')
     </footer>
 </body>
-
 </html>

@@ -53,7 +53,6 @@
             const map = L.map('map').setView([-1.243950, 116.850816], 13);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap'
             }).addTo(map);
 
             setTimeout(() => {

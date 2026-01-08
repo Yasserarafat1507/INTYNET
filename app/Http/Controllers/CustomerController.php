@@ -11,7 +11,8 @@ class CustomerController extends Controller
     {
         return view('form.index');
     }
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'name'      => 'required|string|max:100',
             'email'     => 'required|email|max:100',
