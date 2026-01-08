@@ -16,4 +16,5 @@ Route::controller(CustomerController::class)->group(function () {
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/admin', 'index')->name('admin.index');
+    Route::get('/admin/data', 'data')->name('admin.data');
 });
