@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container flex flex-col items-center py-6 px-5 bg-white w-full rounded">
+    <div class="w-full max-w-4xl flex flex-col bg-white rounded-3xl">
 
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <h2 class="mt-6 text-center text-2xl font-bold tracking-tight text-black">
+        <div class="px-30 py-10">
+            <h2 class="text-5xl font-bold text-black">
                 Mulai Berlangganan
             </h2>
         </div>
 
-        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div class="px-30">
             <form id="registerForm" action="{{ route('form.store') }}" method="POST" class="space-y-6">
                 @csrf
 
