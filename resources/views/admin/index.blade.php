@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Admin')
 
 @section('content')
     <div class="container flex flex-col justify-center items-center py-3 px-5 bg-white w-full rounded">
