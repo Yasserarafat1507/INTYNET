@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Pendaftaran')
 
 @section('content')
     <div class="w-full max-w-4xl flex flex-col bg-white rounded-3xl">

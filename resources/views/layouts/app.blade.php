@@ -13,6 +13,13 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <title>@yield('title')</title>
+
 </head>
 
 <body class="bg-white h-full font-sans antialiased">
@@ -29,4 +36,5 @@
         @include('layouts.navbar.footer')
     </footer>
 </body>
+
 </html>
