@@ -2,17 +2,17 @@
 @section('title', 'Admin')
 
 @section('content')
-    <div class="container flex flex-col justify-center items-center py-3 px-5 bg-white w-full rounded">
-        <table class="table" id="users-table">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>No HP</th>
-                    <th>Kordinat</th>
-                    <th>Status</th>
-                    <th>Action</th>
+    <div class="flex flex-col justify-center p-8 bg-white w-full max-w-7xl rounded-3xl">
+        <table class="table table-layout: auto;" id="users-table">
+            <thead class= "bg-orange-400/60">
+                <tr class="">
+                    <th class="rounded-l-3xl font-bold">No</th>
+                    <th class="font-bold">Name</th>
+                    <th class="font-bold">Email</th>
+                    <th class="font-bold">No HP</th>
+                    <th class="font-bold">Kordinat</th>
+                    <th class="font-bold">Status</th>
+                    <th class="rounded-r-3xl font-bold">Action</th>
                 </tr>
             </thead>
         </table>
