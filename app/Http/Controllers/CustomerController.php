@@ -13,18 +13,25 @@ class CustomerController extends Controller
     }
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name'      => 'required|string|max:100',
-            'email'     => 'required|email|max:100',
-            'phone'     => 'required|string|max:20',
-            'latitude'  => 'required|numeric',
-            'longitude' => 'required|numeric',
-        ]);
+        $request->validate(
+            [
+                'name'      => 'required|string|max:100',
+                'email'     => 'required|email|max:100|unique:customers,email',
+                'phone'     => 'required|string|max:20|unique:customers,phone',
+                'latitude'  => 'required|numeric',
+                'longitude' => 'required|numeric',
+            ],
+            [
+                'email.unique' => 'Email sudah terdaftar',
+                'phone.unique' => 'Nomor sudah terdaftar',
+                'latitude.required' => 'Silakan pilih lokasi pada peta',
+            ]
+        );
 
-        Customer::create($validated);
+        Customer::create($request->all());
 
         return redirect()
             ->route('form.index')
-            ->with('success', 'Data berhasil disimpan.');
+            ->with('success', 'Pendaftaran berhasil');
     }
 }
