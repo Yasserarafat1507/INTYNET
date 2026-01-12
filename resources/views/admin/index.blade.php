@@ -6,13 +6,13 @@
         <table class="table table-layout: auto;" id="users-table">
             <thead class= "bg-orange-400/60">
                 <tr class="">
-                    <th class="rounded-l-3xl font-bold">No</th>
+                    <th class="rounded-tl-3xl font-bold">No</th>
                     <th class="font-bold">Name</th>
                     <th class="font-bold">Email</th>
                     <th class="font-bold">No HP</th>
                     <th class="font-bold">Kordinat</th>
                     <th class="font-bold">Status</th>
-                    <th class="rounded-r-3xl font-bold">Action</th>
+                    <th class="rounded-tr-3xl font-bold">Action</th>
                 </tr>
             </thead>
         </table>
@@ -23,6 +23,7 @@
                     processing: true,
                     serverSide: true,
                     ajax: "{{ route('admin.data') }}",
+                    dom: '<"flex justify-between items-center mb-6"lf>rt<"flex justify-between items-center mt-6"ip>',
                     columns: [{
                             data: 'DT_RowIndex',
                             name: 'DT_RowIndex',
