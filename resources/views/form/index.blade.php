@@ -27,7 +27,7 @@
                 <input type="hidden" name="longitude" id="longitude" required>
 
                 <div class="mt-6 flex justify-center">
-                    <div id="map" class="w-full max-w-7xl h-112.5 rounded-2xl ring-2 ring-gray-300 shadow-inner shadow-gray-500/80">
+                    <div id="map" class="w-full h-120 rounded-2xl ring-2 ring-gray-300 shadow-inner shadow-gray-500/80 relative z-0">
                     </div>
                 </div>
 
