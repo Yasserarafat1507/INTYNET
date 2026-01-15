@@ -14,23 +14,53 @@
             <form id="registerForm" action="{{ route('form.store') }}" method="POST" class="space-y-8">
                 @csrf
 
-                <input type="text" name="name" placeholder="Nama" required
-                    class="block w-full px-4 py-4 rounded-2xl ring-2 ring-gray-300 text-xl font-semibold" />
+                <div>
+                    <input type="text" name="name" placeholder="Nama" value="{{ old('name') }}"
+                        class="block w-full px-4 py-4 rounded-2xl text-xl font-semibold ring-2
+                            @error('name') ring-red-500 @else ring-gray-300 @enderror" />
 
-                <input type="email" name="email" placeholder="Email" required
-                    class="block w-full px-4 py-4 rounded-2xl ring-2 ring-gray-300 text-xl font-semibold" />
+                    @error('name')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
 
-                <input type="text" name="phone" placeholder="No HP" required
-                    class="block w-full px-4 py-4 rounded-2xl ring-2 ring-gray-300 text-xl font-semibold" />
+
+                <div>
+                    <input type="email" name="email" placeholder="Email" value="{{ old('email') }}"
+                        class="block w-full px-4 py-4 rounded-2xl text-xl font-semibold
+        ring-2
+        @error('email') ring-red-500 @else ring-gray-300 @enderror" />
+
+                    @error('email')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+
+                <div>
+                    <input type="text" name="phone" placeholder="No HP" value="{{ old('phone') }}"
+                        class="block w-full px-4 py-4 rounded-2xl text-xl font-semibold
+        ring-2
+        @error('phone') ring-red-500 @else ring-gray-300 @enderror" />
+
+                    @error('phone')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
 
                 <input type="hidden" name="latitude" id="latitude">
                 <input type="hidden" name="longitude" id="longitude">
 
-                {{-- MAP --}}
                 <div class="mt-6 flex justify-center">
                     <div id="map" class="w-full h-[400px] rounded-2xl ring-2 ring-gray-300 shadow-inner">
                     </div>
                 </div>
+
+                @error('latitude')
+                    <p class="mt-3 text-center text-sm text-red-600">
+                        Silakan pilih lokasi pada peta
+                    </p>
+                @enderror
 
                 <button type="submit"
                     class="w-full rounded-full bg-orange-500 py-4 text-xl font-semibold text-white hover:bg-orange-400">
