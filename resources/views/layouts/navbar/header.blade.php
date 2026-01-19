@@ -1,8 +1,10 @@
-<div class="mx-auto  px-4 sm:px-8">
-    <div class="flex h-16">
-            <a href="/" class="flex items-center gap-2">
-                <img class="w-10 sm:w-15" src="{{ asset('images/logo-intynet.png') }}" alt="INTYNET Logo" />
-                <span class="text-xl font-bold text-gray-800 sm:text-3xl">INTYNET</span>
-            </a>
+<div class="mx-auto max-w-7xl px-8">
+    <div class="flex h-16 items-center">
+        <a href="#" class="flex items-center gap-3">
+            <img src="{{ asset('images/logo-intynet.png') }}" alt="INTYNET Logo" class="w-14 h-auto" />
+            <span class="text-3xl font-bold text-gray-800 tracking-wide">
+                INTYNET
+            </span>
+        </a>
     </div>
 </div>

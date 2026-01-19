@@ -4,42 +4,74 @@
 @section('content')
     <div class="w-full max-w-4xl flex flex-col bg-white rounded-3xl">
 
-        <div class="pt-4 pb-8 flex justify-center sm:pt-10 sm:pb-12">
-            <h2 class="text-xl font-bold text-black sm:text-5xl whitespace-nowrap">
+        <div class="px-10 pt-10 pb-10 flex justify-center">
+            <h2 class="text-5xl font-bold text-black">
                 Mulai Berlangganan
             </h2>
         </div>
 
-        <div class="px-10 pb-8 sm:px-30 sm:pb-15">
+        <div class="px-10 pb-10">
             <form id="registerForm" action="{{ route('form.store') }}" method="POST" class="space-y-8">
                 @csrf
 
-                <input type="text" name="name" placeholder="Nama" required
-                    class="block w-full px-1 pb-1 pt-1 rounded-2xl ring-2 ring-gray-300 shadow-inner shadow-gray-500/80 placeholder:font-bold placeholder:text-xl text-xl font-semibold sm:px-4 sm:pb-4 sm:pt-5" />
+                <div>
+                    <input type="text" name="name" placeholder="Nama" value="{{ old('name') }}"
+                        class="block w-full px-4 py-4 rounded-2xl text-xl font-semibold ring-2
+                            @error('name') ring-red-500 @else ring-gray-300 @enderror" />
 
-                <input type="email" name="email" placeholder="Email" required
-                    class="block w-full px-4 pb-4 pt-5 rounded-2xl ring-2 ring-gray-300 shadow-inner shadow-gray-500/80 placeholder:font-bold placeholder:text-xl text-xl font-semibold" />
+                    @error('name')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
 
-                <input type="text" name="phone" placeholder="No HP" required
-                    class="block w-full px-4 pb-4 pt-5 rounded-2xl ring-2 ring-gray-300 shadow-inner shadow-gray-500/80  placeholder:font-bold placeholder:text-xl text-xl font-semibold" />
 
-                <input type="hidden" name="latitude" id="latitude" required>
-                <input type="hidden" name="longitude" id="longitude" required>
+                <div>
+                    <input type="email" name="email" placeholder="Email" value="{{ old('email') }}"
+                        class="block w-full px-4 py-4 rounded-2xl text-xl font-semibold
+        ring-2
+        @error('email') ring-red-500 @else ring-gray-300 @enderror" />
+
+                    @error('email')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+
+                <div>
+                    <input type="text" name="phone" placeholder="No HP" value="{{ old('phone') }}"
+                        class="block w-full px-4 py-4 rounded-2xl text-xl font-semibold
+        ring-2
+        @error('phone') ring-red-500 @else ring-gray-300 @enderror" />
+
+                    @error('phone')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <input type="hidden" name="latitude" id="latitude">
+                <input type="hidden" name="longitude" id="longitude">
 
                 <div class="mt-6 flex justify-center">
-                    <div id="map"
-                        class="w-full max-w-7xl h-112.5 rounded-2xl ring-2 ring-gray-300 shadow-inner shadow-gray-500/80 z-0">
+                    <div id="map" class="w-full h-[400px] rounded-2xl ring-2 ring-gray-300 shadow-inner">
                     </div>
                 </div>
 
+                @error('latitude')
+                    <p class="mt-3 text-center text-sm text-red-600">
+                        Silakan pilih lokasi pada peta
+                    </p>
+                @enderror
+
                 <button type="submit"
-                    class="w-full justify-center rounded-full bg-orange-500 px-4 py-4 text-xl font-semibold text-white hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-black">
+                    class="w-full rounded-full bg-orange-500 py-4 text-xl font-semibold text-white hover:bg-orange-400">
                     Daftar
                 </button>
             </form>
         </div>
     </div>
+@endsection
 
+@push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
@@ -119,4 +151,4 @@
 
         });
     </script>
-@endsection
+@endpush
