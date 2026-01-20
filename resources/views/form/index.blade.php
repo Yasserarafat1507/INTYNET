@@ -52,7 +52,7 @@
                 <input type="hidden" name="longitude" id="longitude">
 
                 <div class="mt-6 flex justify-center">
-                    <div id="map" class="w-full h-[400px] rounded-2xl ring-2 ring-gray-300 shadow-inner">
+                    <div id="map" class="w-full h-[400px] rounded-2xl ring-2 ring-gray-300 shadow-inner z-0">
                     </div>
                 </div>
 
