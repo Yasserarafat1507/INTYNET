@@ -23,7 +23,7 @@
         @include('layouts.navbar.header')
     </header>
 
-    <main class="flex justify-center bg-cover bg-center bg-no-repeat shadow-sm p-10"
+    <main class="flex justify-center bg-cover bg-center bg-no-repeat shadow-sm p-10 min-h-screen"
         style="background-image: url('{{ asset('images/background.jpg') }}');">
         @yield('content')
     </main>
