@@ -12,6 +12,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('/admin', 'index')->name('admin.index');
         Route::get('/admin/data', 'data')->name('admin.data');
+        Route::post('/admin/customer/status', 'updateStatus')->name('admin.customer.status');
     });
 });
 

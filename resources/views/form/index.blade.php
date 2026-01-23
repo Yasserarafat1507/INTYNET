@@ -51,6 +51,7 @@
 
                 <div class="w-full h-[300px] md:h-[400px] rounded-2xl ring-2 ring-gray-300 overflow-hidden">
                     <div id="map" class="w-full h-full"></div>
+
                 </div>
 
                 @error('latitude')

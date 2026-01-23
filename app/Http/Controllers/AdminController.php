@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\Customer;
 use Yajra\DataTables\Facades\DataTables;
-// use Yajra\DataTables\DataTables;
 
 class AdminController extends Controller
 {
@@ -15,7 +14,7 @@ class AdminController extends Controller
 
     public function data()
     {
-        return DataTables::of(Customer::query())
+        return DataTables::of(Customer::latest())
             ->addIndexColumn()
 
             ->addColumn('kordinat', function ($row) {
@@ -23,44 +22,65 @@ class AdminController extends Controller
             })
 
             ->addColumn('status', function ($row) {
-                $statusMap = [
-                    config('constants.status.waiting')  => '<span class="badge bg-warning">Waiting</span>',
-                    config('constants.status.accepted') => '<span class="badge bg-success">Accepted</span>',
-                    config('constants.status.rejected') => '<span class="badge bg-danger">Rejected</span>',
-                ];
+                $waiting = config('constants.status.waiting');
+                $accepted = config('constants.status.accepted');
+                $rejected = config('constants.status.rejected');
 
-                return $statusMap[$row->status] ?? '-';
+                if ($row->status == $waiting) {
+                    return '<span class="flex justify-center bg-yellow-50 border border-yellow-200 text-yellow-700 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                    Waiting
+                </span>';
+                }
+
+                if ($row->status == $accepted) {
+                    return '<span class="flex justify-center bg-green-50 border border-green-200 text-green-700 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                    Accepted
+                </span>';
+                }
+
+                if ($row->status == $rejected) {
+                    return '<span class="flex justify-center bg-red-50 border border-red-200 text-red-700 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                    Rejected
+                </span>';
+                }
+
+                return '<span class="text-gray-500">-</span>';
             })
 
             ->addColumn('action', function ($row) {
-                $waiting  = config('constants.status.waiting');
+                $waiting = config('constants.status.waiting');
                 $accepted = config('constants.status.accepted');
                 $rejected = config('constants.status.rejected');
 
                 if ($row->status === $waiting) {
-                    return '
-            <button class="btn btn-sm btn-success" data-id="' . $row->id . '" data-status="' . $accepted . '">
-                Accept
-            </button>
-            <button class="btn btn-sm btn-danger" data-id="' . $row->id . '" data-status="' . $rejected . '">
-                Reject
-            </button>
-        ';
+                    return view('admin.menu', ['row' => $row])->render();
                 }
 
-                if ($row->status === $accepted) {
-                    return '<span class="badge bg-success">Accepted</span>';
-                }
-
-                if ($row->status === $rejected) {
-                    return '<span class="badge bg-danger">Rejected</span>';
-                }
-
-                return '-';
+                return '';
             })
-
 
             ->rawColumns(['status', 'action'])
             ->make(true);
     }
+
+    public function updateStatus(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:customers,id',
+            'status' => 'required'
+        ]);
+
+        $customer = Customer::find($request->id);
+
+        if ($customer) {
+            $customer->status = $request->status;
+            $customer->save();
+
+            return response()->json(['success' => true, 'message' => 'Status berhasil diubah!']);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Data tidak ditemukan'], 404);
+    }
+
+
 }
