@@ -17,12 +17,14 @@
                     </tr>
                 </thead>
             </table>
+        </div>
     </div>
     <script>
         $(function() {
             $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
+                ordering: false,
                 ajax: "{{ route('admin.data') }}",
                 dom: '<"flex justify-between items-center mb-6"lf>rt<"flex justify-between items-center mt-6"ip>',
                 columns: [{
@@ -63,20 +65,20 @@
                     }
                 ]
             });
-        });
 
-        $(document).on('click', 'button[data-status]', function() {
-            let id = $(this).data('id');
-            let status = $(this).data('status');
+            $(document).on('click', 'button[data-status]', function() {
+                let id = $(this).data('id');
+                let status = $(this).data('status');
 
-            $.post('/admin/customer/status', {
-                id: id,
-                status: status,
-                _token: '{{ csrf_token() }}'
-            }, function() {
-                $('#users-table').DataTable().ajax.reload();
+                $.post('/admin/customer/status', {
+                    id: id,
+                    status: status,
+                    _token: '{{ csrf_token() }}'
+                }, function() {
+                    $('#users-table').DataTable().ajax.reload();
+                });
             });
+
         });
     </script>
-    </div>
 @endsection

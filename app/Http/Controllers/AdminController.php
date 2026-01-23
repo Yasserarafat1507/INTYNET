@@ -44,13 +44,11 @@ class AdminController extends Controller
                 </span>';
                 }
 
-                return '<span class="text-gray-500">-</span>';
+                return '';
             })
 
             ->addColumn('action', function ($row) {
                 $waiting = config('constants.status.waiting');
-                $accepted = config('constants.status.accepted');
-                $rejected = config('constants.status.rejected');
 
                 if ($row->status === $waiting) {
                     return view('admin.menu', ['row' => $row])->render();
